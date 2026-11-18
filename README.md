@@ -254,3 +254,50 @@ A new column named `Profit Status` is created in the `Order Details` table using
 ### Outcome
 
 Successfully created the `Profit Status` column to classify orders into Profit, Loss, and Break-Even categories based on their profit values. This classification supports profitability analysis and helps identify loss-making and profitable orders.
+
+
+## 3. Merging Data (Joins): 
+
+The `List of Orders` and `Order Details` tables are merged into a new table named `Orders Data` using the `Order ID` column as the common key. An **Inner Join** is applied to retrieve only the records with matching `Order ID` values in both tables.
+
+### Steps Performed
+
+1. Open **Power Query Editor** by selecting **Transform Data** in Power BI Desktop.
+2. Select the original `List of Orders` table from the Queries pane.
+3. Navigate to the **Home** tab and locate the **Combine** section.
+4. Click the **Merge Queries** dropdown and select **Merge Queries as New**.
+5. In the Merge dialog box, configure the following:
+   - **First Table (Left Table):** List of Orders
+   - **Second Table (Right Table):** Order Details
+6. Select the `Order ID` column in the first table.
+7. Select the corresponding `Order ID` column in the second table to establish the common matching key.
+8. Under **Join Kind**, select **Inner (only matching rows)**.
+9. Click **OK** to execute the merge operation.
+10. A new merged query is created. Rename the newly created query to `Orders Data`.
+11. In the merged table, locate the nested `Order Details` column and click the **Expand** icon (two arrows) in the column header.
+12. Select the required columns from the `Order Details` table and click **OK** to expand the selected data.
+13. Verify that the consolidated table contains the expected records and columns from both datasets.
+
+### Merge Configuration
+
+| Parameter | Configuration |
+|---|---|
+| Left Table | List of Orders |
+| Right Table | Order Details |
+| Common Key | Order ID |
+| Join Type | Inner Join |
+| Merge Operation | Merge Queries as New |
+| New Table Name | Orders Data |
+
+### Transformation Scope
+
+- **Source Tables:** List of Orders and Order Details
+- **Merge Operation:** Merge Queries as New
+- **Join Method:** Inner Join
+- **Matching Column:** Order ID
+- **Output Table:** Orders Data
+- **Original Tables:** Retained without modification.
+
+### Outcome
+
+Successfully integrated the `List of Orders` and `Order Details` datasets into a new table named `Orders Data` using an Inner Join on `Order ID`. The resulting table contains records with matching order IDs from both datasets, providing a consolidated dataset for further data analysis and modeling.
