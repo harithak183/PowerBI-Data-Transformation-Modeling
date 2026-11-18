@@ -22,7 +22,7 @@ The first step of the analysis involves importing the three CSV datasets (`List 
 
 Successfully imported all three CSV datasets into Power BI and made them available for further data cleaning, transformation, and data modeling using Power Query Editor.
 
-### 2 Data Transformation: 
+## 2 Data Transformation: 
 
 2.1 Restrict the "List of Orders" table to only the first 500 rows. 
 The `List of Orders` table is restricted to the first 500 records using the **Keep Top Rows** transformation in Power Query Editor.
@@ -49,7 +49,7 @@ The `List of Orders` table is restricted to the first 500 records using the **Ke
 
 Successfully restricted the `List of Orders` table to 500 records while preserving the other two datasets for subsequent data transformation and modeling.
 
-## 2.2. Ensure the “Order Date” column in the “List of Orders” table is set to data type 'Date'.
+### 2.2. Ensure the “Order Date” column in the “List of Orders” table is set to data type 'Date'.
 
 The `Order Date` column in the `List of Orders` table is converted from **Text** to **Date** data type using Power Query Editor. This ensures that the column is recognized as a date field and can be used correctly for date-based analysis, filtering, and time-related calculations.
 
@@ -76,7 +76,7 @@ The `Order Date` column in the `List of Orders` table is converted from **Text**
 
 Successfully converted the `Order Date` column from Text to Date data type, ensuring accurate date recognition and enabling reliable date-based filtering, sorting, and analysis in Power BI.
 
-## 2.3 Change the data type of “Amount” and “Target” columns to ‘Fixed Decimal Number’.
+### 2.3 Change the data type of “Amount” and “Target” columns to ‘Fixed Decimal Number’.
 
 The `Amount` column in the `Order Details` table and the `Target` column in the `Sales target` table are converted from **Whole Number** to **Fixed Decimal Number** using Power Query Editor.
 
@@ -113,7 +113,7 @@ This transformation ensures consistent numeric precision when handling monetary 
 
 Successfully converted the `Amount` and `Target` columns to Fixed Decimal Number data type, ensuring consistent numeric precision for monetary calculations, sales target comparisons, and further data analysis.
 
-## 2.4 Format the "CustomerName" column into proper case, ensuring consistent 
+### 2.4 Format the "CustomerName" column into proper case, ensuring consistent 
 capitalization for each word. 
 
 The `CustomerName` column in the `List of Orders` table is formatted into **Proper Case (Capitalize Each Word)** using Power Query Editor. This transformation ensures consistent capitalization across customer names by converting the first letter of each word to uppercase and the remaining letters to lowercase.
@@ -139,7 +139,7 @@ The `CustomerName` column in the `List of Orders` table is formatted into **Prop
 
 Successfully converted customer names into Proper Case format, ensuring consistent text presentation and improving data quality for customer-level analysis and reporting.
 
-## 2.5 Merge the "State" and "City" columns to create a new column named "Location" in 
+### 2.5 Merge the "State" and "City" columns to create a new column named "Location" in 
 the format ‘City, State’
 
 The `City` and `State` columns in the `List of Orders` table are combined to create a new column named `Location`. The new column follows the format **City, State** using the Custom Column feature in Power Query Editor.
@@ -178,7 +178,7 @@ The `City` and `State` columns in the `List of Orders` table are combined to cre
 
 Successfully created a new `Location` column by combining the `City` and `State` values, providing a consolidated geographical attribute for location-based analysis and reporting.
 
-## 2.6 Create a new custom column named "Profit Margin" as the percentage of "Profit" 
+### 2.6 Create a new custom column named "Profit Margin" as the percentage of "Profit" 
 divided by "Amount". 
 
 1. Open **Power Query Editor** by selecting **Transform Data** in Power BI Desktop.
@@ -210,7 +210,7 @@ divided by "Amount".
 
 Successfully created a new `Profit Margin` column by calculating the percentage of profit relative to the amount, enabling further profitability analysis.
 
-## 2.7 Add a new conditional column named "Profit Status" based on the values in the "Profit" column. The conditions are as follows: if the profit is less than 0, the label should be "Loss"; if the profit equals 0, the label should be "Break-Even"; and if the profit is greater than 0, the label should be "Profit".
+### 2.7 Add a new conditional column named "Profit Status" based on the values in the "Profit" column. The conditions are as follows: if the profit is less than 0, the label should be "Loss"; if the profit equals 0, the label should be "Break-Even"; and if the profit is greater than 0, the label should be "Profit".
 
 A new column named `Profit Status` is created in the `Order Details` table using the **Conditional Column** feature in Power Query Editor. The column categorizes each order based on its profit value into three categories: Loss, Break-Even, and Profit.
 
