@@ -256,7 +256,7 @@ A new column named `Profit Status` is created in the `Order Details` table using
 Successfully created the `Profit Status` column to classify orders into Profit, Loss, and Break-Even categories based on their profit values. This classification supports profitability analysis and helps identify loss-making and profitable orders.
 
 
-## 3. Merging Data (Joins): 
+### 3. Merging Data (Joins): 
 
 The `List of Orders` and `Order Details` tables are merged into a new table named `Orders Data` using the `Order ID` column as the common key. An **Inner Join** is applied to retrieve only the records with matching `Order ID` values in both tables.
 
