@@ -301,3 +301,92 @@ The `List of Orders` and `Order Details` tables are merged into a new table name
 ### Outcome
 
 Successfully integrated the `List of Orders` and `Order Details` datasets into a new table named `Orders Data` using an Inner Join on `Order ID`. The resulting table contains records with matching order IDs from both datasets, providing a consolidated dataset for further data analysis and modeling.
+
+### 4 .Grouping and Aggregating Data: 
+4.1 Duplicate the “Order Details” table and calculate the count of each Order ID, average 
+profit by Category or total amount by Sub-Category
+
+The `Order Details` table is duplicated to perform grouping and aggregation operations without modifying the original dataset. The **Group By** feature in Power Query Editor is used to generate summarized datasets based on different business attributes.
+
+### Steps Performed
+
+**1. Count of Each Order ID**
+
+1. Duplicate the original `Order Details` table.
+2. Rename the duplicated query to `Order Details Summary`.
+3. Navigate to **Home → Group By**.
+4. Select `Order ID` as the grouping column.
+5. Configure the aggregation:
+   - New Column Name: `Order Count`
+   - Operation: `Count Rows`
+6. Click **OK** to generate the order-level record count.
+
+**2. Average Profit by Category**
+
+1. Duplicate the original `Order Details` table.
+2. Rename the duplicated query to `Average Profit by Category`.
+3. Navigate to **Home → Group By**.
+4. Select `Category` as the grouping column.
+5. Configure the aggregation:
+   - New Column Name: `Average Profit`
+   - Operation: `Average`
+   - Column: `Profit`
+6. Click **OK** to calculate the average profit for each category.
+
+**3. Total Amount by Sub-Category**
+
+1. Duplicate the original `Order Details` table.
+2. Rename the duplicated query to `Total Amount by Sub-Category`.
+3. Navigate to **Home → Group By**.
+4. Select `Sub-Category` as the grouping column.
+5. Configure the aggregation:
+   - New Column Name: `Total Amount`
+   - Operation: `Sum`
+   - Column: `Amount`
+6. Click **OK** to calculate the total amount for each sub-category.
+
+### Transformation Scope
+
+| Summary Table | Grouping Column | Aggregation |
+|---|---|---|
+| Order Details Summary | Order ID | Count Rows |
+| Average Profit by Category | Category | Average Profit |
+| Total Amount by Sub-Category | Sub-Category | Sum of Amount |
+
+### Outcome
+
+Successfully performed grouping and aggregation operations on duplicated datasets to generate order-level counts, category-wise average profit, and sub-category-wise total amounts. These summarized datasets support further business analysis and reporting while preserving the original detailed dataset.
+
+### 4.1 Duplicate the “Sales Target” table and aggregate the total target amount by Month of Order Date
+
+## 12. Data Transformation – Aggregating Monthly Sales Targets
+
+The `Sales target` table is duplicated to calculate the total sales target for each month using the **Group By** feature in Power Query Editor. This transformation generates a summarized dataset containing monthly target amounts while preserving the original table.
+
+### Steps Performed
+
+1. Open **Power Query Editor** by selecting **Transform Data** in Power BI Desktop.
+2. In the Queries pane, right-click the `Sales target` table and select **Duplicate**.
+3. Rename the duplicated query to `Monthly Sales Target`.
+4. Select the `Monthly Sales Target` table.
+5. Navigate to the **Home** tab and select **Group By** from the Transform section.
+6. In the Group By dialog box, select **Basic** and configure the following:
+   - **Group By:** Month of Order Date
+   - **New Column Name:** Total Target
+   - **Operation:** Sum
+   - **Column:** Target
+7. Click **OK** to apply the aggregation.
+8. Verify that the resulting table displays each month with its corresponding total target amount.
+
+### Transformation Scope
+
+- **Source Table:** Sales target
+- **Output Table:** Monthly Sales Target
+- **Grouping Column:** Month of Order Date
+- **Aggregation Column:** Target
+- **Aggregation Function:** Sum
+- **Original Table:** Remains unchanged.
+
+### Outcome
+
+Successfully aggregated the sales target amounts by month, generating a summarized dataset that supports monthly sales target analysis and comparison with actual sales performance.
