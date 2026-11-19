@@ -390,3 +390,5 @@ The `Sales target` table is duplicated to calculate the total sales target for e
 ### Outcome
 
 Successfully aggregated the sales target amounts by month, generating a summarized dataset that supports monthly sales target analysis and comparison with actual sales performance.
+
+
