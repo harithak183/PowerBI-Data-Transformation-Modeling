@@ -1,6 +1,7 @@
 # PowerBI-Data-Transformation-Modeling
 This project focuses on data transformation and data modeling using Microsoft Power BI. It covers data cleaning, transformation using Power Query.
-## 1. Data Import
+
+## 1.Import Data: 
 
 The first step of the analysis involves importing the three CSV datasets (`List of Orders.csv`, `Order Details.csv`, and `Sales target.csv`) into Power BI for data transformation and modeling.
 
@@ -16,7 +17,7 @@ The first step of the analysis involves importing the three CSV datasets (`List 
 8. Browse and select `Order Details.csv`, review the data preview, and click **OK** to import the dataset into Power Query Editor.
 9. Repeat the same process to import `Sales target.csv`.
 10. Verify that all three datasets are available as separate queries in the Power Query Editor.
-11. After confirming that the datasets have been imported successfully, navigate to the **Home** tab and select **Close & Apply** to load the data into the Power BI data model.
+11. After confirming that the datasets have been imported successfully, navigate to the **Home** tab and select **Close & Apply** to load the into the Power BI data model.
 
 ### Outcome
 
@@ -256,7 +257,7 @@ A new column named `Profit Status` is created in the `Order Details` table using
 Successfully created the `Profit Status` column to classify orders into Profit, Loss, and Break-Even categories based on their profit values. This classification supports profitability analysis and helps identify loss-making and profitable orders.
 
 
-### 3. Merging Data (Joins): 
+### 3. Data Transformation - Merging Data (Joins): 
 
 The `List of Orders` and `Order Details` tables are merged into a new table named `Orders Data` using the `Order ID` column as the common key. An **Inner Join** is applied to retrieve only the records with matching `Order ID` values in both tables.
 
@@ -302,8 +303,80 @@ The `List of Orders` and `Order Details` tables are merged into a new table name
 
 Successfully integrated the `List of Orders` and `Order Details` datasets into a new table named `Orders Data` using an Inner Join on `Order ID`. The resulting table contains records with matching order IDs from both datasets, providing a consolidated dataset for further data analysis and modeling.
 
-### 4 .Grouping and Aggregating Data: 
-4.1 Duplicate the “Order Details” table and calculate the count of each Order ID, average 
+### 4. Data Transformation - Handling Missing Data & Duplicate Data: 
+● Identify missing values in the data and determine a strategy to address them. 
+● Check for duplicate rows and define a strategy to handle duplicates. 
+
+### Objective
+To identify missing values and duplicate records in the three source tables: `List of Orders`, `Order Details`, and `Sales target`, and determine appropriate data-cleaning strategies.
+
+### 1. Identifying Missing Values
+- Opened Power Query Editor using **Home → Transform Data**.
+- Enabled **Column Quality**, **Column Distribution**, and **Column Profile** from the View tab.
+- Examined all columns in the three tables to identify null values, blank cells, and errors.
+- No missing values were identified in the provided datasets.
+- Therefore, no missing-value replacement or deletion was required.
+
+### 2. Checking Duplicate Rows
+- Checked each table separately for duplicate records by selecting all columns.
+- Used **Home → Remove Rows → Remove Duplicates** as the method for removing exact duplicate rows, if identified.
+- No exact duplicate rows were identified in the three provided datasets.
+
+### 3. Data Cleaning Strategy
+- **Missing Values:** No replacement was required because no missing values were identified.
+- **Duplicate Rows:** Retain all records because no exact duplicate rows were identified.
+- **Repeated Order IDs:** Retain repeated Order IDs in the `Order Details` table because they represent different product records belonging to the same order.
+- **Repeated Months:** Retain records in the `Sales target` table because the same month can have separate target values for different categories.
+
+### Outcome
+All three source tables were checked for missing values and exact duplicate rows. No missing values or exact duplicate rows were identified. Valid repeated Order IDs and month-category records were retained to preserve the original business data.
+
+### 5 Data Transformation – Sorting and Filtering Data
+● In the ‘Orders Data’ table, utilize sorting and filtering techniques on columns like 
+Order Date, State or Category to analyze data based on specific criteria: 
+◆ Sort the orders by Order Date in descending order to analyze recent trends. 
+◆ Filter the orders to focus only on a specific state (e.g., Tamil Nadu) for 
+regional analysis.
+
+
+The `Orders Data` table is sorted and filtered using Power Query Editor to analyze recent order trends and perform region-specific analysis. The `Order Date` column is sorted in descending order, and the `State` column is filtered to display orders from Tamil Nadu.
+
+### Steps Performed
+
+**1. Sorting Orders by Order Date**
+
+1. Open **Power Query Editor** by selecting **Transform Data** in Power BI Desktop.
+2. Select the `Orders Data` table from the Queries pane.
+3. Locate the `Order Date` column.
+4. Click the dropdown arrow in the `Order Date` column header.
+5. Select **Sort Descending** to arrange the orders from the most recent date to the oldest date.
+6. Verify that the latest orders appear at the top of the table.
+
+**2. Filtering Orders by State**
+
+1. In the `Orders Data` table, locate the `State` column.
+2. Click the dropdown arrow in the `State` column header.
+3. In the filter options, deselect **Select All**.
+4. Select **Tamil Nadu** from the available state values.
+5. Click **OK** to apply the filter.
+6. Verify that only records belonging to Tamil Nadu are displayed.
+
+### Transformation Scope
+
+- **Target Table:** Orders Data
+- **Sorting Column:** Order Date
+- **Sorting Order:** Descending (Newest to Oldest)
+- **Filtering Column:** State
+- **Filter Condition:** Equals Tamil Nadu
+- **Operations Applied:** Sort Descending and Text Filtering
+
+### Outcome
+
+Successfully sorted the `Orders Data` table by `Order Date` in descending order to identify recent transactions and filtered the dataset to display orders from Tamil Nadu for focused regional analysis.
+
+
+### 6 .Grouping and Aggregating Data: 
+6.1 Duplicate the “Order Details” table and calculate the count of each Order ID, average 
 profit by Category or total amount by Sub-Category
 
 The `Order Details` table is duplicated to perform grouping and aggregation operations without modifying the original dataset. The **Group By** feature in Power Query Editor is used to generate summarized datasets based on different business attributes.
@@ -357,9 +430,7 @@ The `Order Details` table is duplicated to perform grouping and aggregation oper
 
 Successfully performed grouping and aggregation operations on duplicated datasets to generate order-level counts, category-wise average profit, and sub-category-wise total amounts. These summarized datasets support further business analysis and reporting while preserving the original detailed dataset.
 
-### 4.1 Duplicate the “Sales Target” table and aggregate the total target amount by Month of Order Date
-
-## 12. Data Transformation – Aggregating Monthly Sales Targets
+### 6.2 Duplicate the “Sales Target” table and aggregate the total target amount by Month of Order Date
 
 The `Sales target` table is duplicated to calculate the total sales target for each month using the **Group By** feature in Power Query Editor. This transformation generates a summarized dataset containing monthly target amounts while preserving the original table.
 
@@ -391,4 +462,33 @@ The `Sales target` table is duplicated to calculate the total sales target for e
 
 Successfully aggregated the sales target amounts by month, generating a summarized dataset that supports monthly sales target analysis and comparison with actual sales performance.
 
+### 7. Data Modeling: 
+● Establish a relationship between the “List of Orders” and “Order Details” tables using 
+the ‘Order ID’ column. 
+● Build a relationship between the “Order Details” and “Sales Target” tables based on 
+the ‘Category’ column. Click "Manage relationships" and ensure this relationship is 
+active.
 
+### Objective
+To establish relationships between the `List of Orders`, `Order Details`, and `Sales target` tables using the common columns `Order ID` and `Category`.
+
+### 1. Relationship between List of Orders and Order Details
+- Opened Model View in Power BI Desktop.
+- Created a relationship between `List of Orders[Order ID]` and `Order Details[Order ID]`.
+- Set the cardinality to **One-to-Many (1:*)**, with `List of Orders` on the one side and `Order Details` on the many side.
+- Set the cross-filter direction to Single.
+- Ensured that the relationship was active.
+
+### 2. Relationship between Order Details and Sales target
+- Created a relationship between `Order Details[Category]` and `Sales target[Category]`.
+- Set the cardinality to **Many-to-Many (*:*)** because Category values are repeated in both tables.
+- Set the cross-filter direction to Single.
+- Enabled the active relationship.
+
+### 3. Verify Relationships
+- Opened **Modeling → Manage relationships**.
+- Verified that both relationships were listed.
+- Checked that both relationships were active.
+
+### Outcome
+Established relationships between the three tables using `Order ID` and `Category` to connect order-level information, product-level details, and sales targets.
